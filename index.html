@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación Danza del Congo Reformado</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET & ROOT ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rojo: #DF0453;
+            --amarillo: #FBC612;
+            --verde: #4A8C1C;
+            --negro: #1a1a1a;
+            --blanco: #FAFAFA;
+            --azul-oscuro: #060135;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: var(--blanco);
+            color: var(--negro);
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        .header {
+            width: 100%;
+            background-color: var(--rojo);
+            padding: 16px 60px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            
+           
+            
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            
+           
+        }
+
+        .logo__svg {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav__content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: nowrap;
+        }
+
+        .nav__link {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav__link:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .nav__button {
+            background-color: var(--amarillo);
+            color: var(--negro);
+            text-decoration: none;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            white-space: nowrap;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav__button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(251,198,18,0.5);
+        }
+
+        .nav__hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            padding: 4px;
+        }
+
+        .nav__hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('bailadas_congo.jpg');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.04);
+            animation: heroBgZoom 8s ease-out forwards;
+            z-index: 0;
+        }
+
+        /* Overlay degradado izq uierda oscura → derecha transparente */
+        .hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(6, 1, 53, 0.88) 0%,
+                rgba(6, 1, 53, 0.65) 45%,
+                rgba(6, 1, 53, 0.1) 100%
+
+            );
+            opacity: 0.9;
+            
+            z-index:1;
+            
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            padding: 0 80px;
+            max-width: 680px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            animation: fadeInUp 1s ease both;
+        }
+
+        .hero__badge {
+            display: inline-block;
+            background: var(--rojo);
+            color: var(--blanco);
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            align-self: flex-start;
+        }
+
+        .hero__title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(64px, 9vw, 130px);
+            color: #1a1a1a;
+            line-height: 0.92;
+            letter-spacing: 2px;
+        }
+
+        .hero__title span {
+            color: var(--verde);
+        }
+
+        .hero__subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255, 255, 255, 0.82);
+            font-weight: 300;
+            line-height: 1.7;
+            max-width: 480px;
+        }
+
+        .hero__cta {
+            display: inline-block;
+            margin-top: 8px;
+            background: var(--rojo);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 16px 40px;
+            border-radius: 50px;
+            align-self: flex-start;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero__cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(223, 4, 83, 0.45);
+        }
+
+        @keyframes heroBgZoom {
+            from { transform: scale(1.04); }
+            to   { transform: scale(1); }
+        }
+
+        @media (max-width: 700px) {
+            .hero__content {
+                padding: 0 28px;
+                max-width: 100%;
+            }
+
+            .hero__overlay {
+                background: rgba(1, 53, 17, 0.85);
+            }
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            width: 100%;
+            background-color: #fff;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .about__image-wrap {
+            overflow: hidden;
+            height: 100%;
+            min-height: 600px;
+            scale: 1.8;
+             animation: aboutImageZoom 8s ease-out forwards;
+             padding-top: 60px;
+        }
+
+        .about__image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .about__image-wrap:hover img {
+            transform: scale(1.04);
+        }
+
+        .about__content {
+            padding: 60px 70px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .about__title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(48px, 6vw, 90px);
+            color: var(--rojo);
+            line-height: 0.9;
+            letter-spacing: 2px;
+        }
+
+        .about__paragrah {
+            font-size: 17px;
+            line-height: 1.9;
+            color: var(--azul-oscuro);
+            font-weight: 400;
+            max-width: 520px;
+        }
+
+        .about__badge {
+            display: inline-block;
+            background: var(--amarillo);
+            color: var(--negro);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            align-self: flex-start;
+        }
+
+        /* ===== ACTIVITIES ===== */
+        .activity {
+            width: 100%;
+            background-color: var(--amarillo);
+            padding: 80px 60px;
+             background-image: url('./elementos landing page/otros/flor verde.png');
+            
+            background-repeat: no-repeat;
+        }
+
+        .activity__header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .activity__title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(56px, 8vw, 110px);
+            color: #fff;
+            line-height: 1;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+        }
+
+        .activity__subtitle {
+            font-size: 20px;
+            color: var(--negro);
+            font-weight: 400;
+            margin-top: 12px;
+        }
+
+        .activity__content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .activity__card {
+            background-color: var(--blanco);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+          
+        }
+
+        .activity__card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .activity__card img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .activity__text {
+            color: #DF0453;
+            font-size: 40px;
+            font-weight: 700;
+            padding: 24px 28px;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        /* ===== PUBLICACIONES ===== */
+        .publications {
+            width: 100%;
+            padding: 80px 60px;
+            background-color: var(--blanco);
+            background-image: url('./elementos landing page/otros/tiburon frente rojo.png');
+            
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            background-size: 320px;
+        }
+
+        .publications__title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(48px, 7vw, 100px);
+            color: var(--negro);
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+        }
+
+        .publications__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .publications__card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #fff;
+        }
+
+        .publications__card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+        }
+
+        .publications__card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card__content {
+            padding: 24px;
+        }
+
+        .card__tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--rojo);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .card__title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 28px;
+            line-height: 1.1;
+            color: var(--negro);
+            letter-spacing: 1px;
+        }
+
+        .card__paragrah {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+
+        /* ===== FOLLOW (CTA) ===== */
+        .follow {
+            width: 100%;
+            background-color: var(--verde);
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+             background-image: url('./elementos landing page/otros/roca amarillo.png');
+            
+            background-repeat: no-repeat;
+            background-position:  bottom left;
+            background-size: 320px;
+        }
+
+        .follow__title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(48px, 7vw, 90px);
+            color: #fff;
+            text-align: center;
+            letter-spacing: 3px;
+            line-height: 1;
+        }
+
+        .follow__subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 18px;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .follow__form-row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 16px;
+            width: 100%;
+            max-width: 960px;
+            justify-content: center;
+        }
+
+        .follow__form-row .follow__input {
+            flex: 1 1 200px;
+            min-width: 180px;
+            max-width: 280px;
+        }
+
+        .follow__form-row .follow__form-btn {
+            flex: 0 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .follow__form-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .follow__form-row .follow__input {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .follow__form-row .follow__form-btn {
+                width: 100%;
+            }
+
+            .follow {
+                padding: 60px 24px;
+            }
+        }
+
+        .follow__info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .follow__info-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 4px;
+            border: 2px solid rgba(255,255,255,0.25);
+        }
+
+        .follow__info-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--amarillo);
+        }
+
+        .follow__info-value {
+            font-size: 15px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+        }
+
+        .follow__info-value a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .follow__info-value a:hover {
+            color: var(--amarillo);
+        }
+
+        .follow__divider {
+            width: 1px;
+            background: rgba(255,255,255,0.2);
+            align-self: stretch;
+        }
+
+        .follow__form-btn {
+            background: var(--amarillo);
+            color: var(--negro);
+            border: none;
+            border-radius: 50px;
+            padding: 18px 56px;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 8px;
+        }
+
+        .follow__form-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(251,198,18,0.45);
+        }
+
+        .footer__contact-blocks {
+            display: flex;
+            flex-direction: row;
+            gap: 32px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer__contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1 1 140px;
+        }
+
+        @media (max-width: 600px) {
+            .footer__contact-blocks {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        /* Ajuste inputs dentro de follow__info */
+        .follow__info .follow__info-block {
+            align-items: stretch;
+        }
+
+        .follow__input {
+            width: 100%;
+            height: 56px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 15px;
+            font-family: 'Work Sans', sans-serif;
+            padding: 0 20px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .follow__input::placeholder {
+            color: rgba(255,255,255,0.55);
+        }
+
+        .follow__input:focus {
+            border-color: var(--amarillo);
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            width: 100%;
+            background-color: var(--negro);
+            padding: 64px 60px 0;
+        }
+
+        .footer__top {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 80px;
+            align-items: start;
+            padding-bottom: 56px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Columna izquierda */
+        .footer__brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer__logo img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .footer__tagline {
+            font-size: 14px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer__links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .footer__links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .footer__links a:hover {
+            color: var(--amarillo);
+        }
+
+        /* Columna derecha — formulario */
+        .footer__form-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer__form-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 38px;
+            color: #fff;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .footer__form-title span {
+            color: var(--amarillo);
+        }
+
+        .footer__form-subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.7;
+        }
+
+        .footer__form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .footer__input {
+            width: 100%;
+            height: 52px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Work Sans', sans-serif;
+            padding: 0 18px;
+            outline: none;
+            transition: border 0.2s, background 0.2s;
+        }
+
+        .footer__input::placeholder {
+            color: rgba(255,255,255,0.35);
+        }
+
+        .footer__input:focus {
+            border-color: var(--amarillo);
+            background: rgba(255,255,255,0.11);
+        }
+
+        .footer__input--full {
+            grid-column: 1 / -1;
+        }
+
+        .footer__form-btn {
+            grid-column: 1 / -1;
+            height: 54px;
+            background: var(--rojo);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .footer__form-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(223, 4, 83, 0.4);
+        }
+
+        /* Barra inferior */
+        .footer__bottom {
+            padding: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer__copy {
+            color: rgba(255,255,255,0.3);
+            font-size: 12px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 900px) {
+            .footer {
+                padding: 48px 24px 0;
+            }
+
+            .footer__top {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer__form {
+                grid-template-columns: 1fr;
+            }
+
+            .footer__input--full {
+                grid-column: 1;
+            }
+
+            .footer__form-btn {
+                grid-column: 1;
+            }
+        }
+
+        /* ===== ANIMACIONES ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .header {
+                padding: 14px 24px;
+            }
+
+            .nav__content .nav__link {
+                display: none;
+            }
+
+            .nav__content .nav__button {
+                display: none;
+            }
+
+            .nav__hamburger {
+                display: flex;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about__image-wrap {
+                min-height: 300px;
+            }
+
+            .about__content {
+                padding: 40px 28px;
+            }
+
+            .activity {
+                padding: 60px 24px;
+            }
+
+            .activity__content {
+                grid-template-columns: 1fr;
+            }
+
+            .publications {
+                padding: 60px 24px;
+            }
+
+            .publications__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .follow {
+                padding: 60px 24px;
+            }
+
+            .footer {
+                padding: 36px 24px;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                
+            }
+        }
+
+        @media (max-width: 600px) {
+            .activity__card img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .activity__text {
+                font-size: 18px;
+                padding: 16px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#">
+                <img class="logo__svg" src="./elementos landing page/otros/logo congo reformado blanco.png" alt="Logo Fundación Danza del Congo Reformado">
+            </a>
+            <div class="nav__content">
+                <a class="nav__link" href="#nosotros">NOSOTROS</a>
+                <a class="nav__link" href="#actividades">ACTIVIDADES</a>
+                <a class="nav__link" href="#publicaciones">PUBLICACIONES</a>
+                <a class="nav__button" href="#contacto">Contáctanos</a>
+            </div>
+            <button class="nav__hamburger" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero__bg"></div>
+            <div class="hero__overlay">
+            <img src="./elementos landing page/hero/baner congo.jpg" alt="Banner decorativo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+            ;
+            ">
+            </div>
+            <div class="hero__content">
+                <span class="hero__badge">Barranquilla · Desde 1962</span>
+                <h1 class="hero__title">
+                    DANZA<br>
+                    <span>CONGO</span><br>
+                    REFORMADO
+                </h1>
+                <p class="hero__subtitle">
+                    
+                </p>
+
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="nosotros" class="about">
+            <div class="about__image-wrap">
+                <img src="./elementos landing page/nosotros/about congo.png" alt="Sobre la Fundación Danza del Congo Reformado">
+            </div>
+            <article class="about__content fade-in">
+                <span class="about__badge">DESDE 1962 · BARRANQUILLA</span>
+                <h2 class="about__title">¿QUIÉNES SOMOS?</h2>
+                <p class="about__paragrah">
+                    La Fundación Danza del Congo Reformado fue fundada por Manuel Sánchez en 1962 en el barrio Pumarejo de Barranquilla, como una escisión del Congo Grande para desarrollar un estilo propio. Actualmente liderada por su hijo Julio Sánchez Stevenson (desde 1987) y con semilleros a cargo de Yuliana Sánchez (desde 2004), somos una familia que por más de 60 años ha reformado la tradición del Congo con libertad, tambor y resistencia alegre, siendo embajadores del Carnaval de Barranquilla en escenarios internacionales como Portugal (2017).
+                </p>
+            </article>
+        </section>
+
+        <!-- ACTIVITIES -->
+        <section id="actividades" class="activity">
+            <div class="activity__header fade-in">
+                <h2 class="activity__title">Nuestros Pasos</h2>
+                <p class="activity__subtitle">En nuestra fundación gozarás de actividades como:</p>
+            </div>
+            <div class="activity__content">
+                <div class="activity__card fade-in">
+                    <img src="./elementos landing page/actividades/imagen_congo.png" alt="Eventos importantes">
+                    <h4 class="activity__text">Eventos Importantes</h4>
+                </div>
+                <div class="activity__card fade-in">
+                    <img src="./elementos landing page/actividades/danza_congo.png" alt="Talleres de baile">
+                    <h4 class="activity__text">Talleres de Baile</h4>
+                </div>
+                <div class="activity__card fade-in">
+                    <img src="./elementos landing page/actividades/congo_disfraz.png" alt="Creación de disfraces">
+                    <h4 class="activity__text">Creación de Disfraces</h4>
+                </div>
+                <div class="activity__card fade-in">
+                    <img src="./elementos landing page/actividades/bailadas_congo.png" alt="Bailada de Congos">
+                  -
+                    <h4 class="activity__text">Bailada de Congos</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- PUBLICACIONES -->
+        <section id="publicaciones" class="publications">
+            <h2 class="publications__title fade-in">Los Pasos más Destacados</h2>
+            <div class="publications__grid">
+
+                <article class="publications__card fade-in">
+                    <img src="./elementos landing page/publicaciones/congo flores.jpg" alt="Batalla de Flores">
+                    <div class="card__content">
+                        <p class="card__tag">Carnaval de Barranquilla</p>
+                        <h3 class="card__title">Batalla de Flores</h3>
+                        <p class="card__paragrah">El desfile más emblemático del Carnaval, donde el Congo Reformado despliega toda su majestuosidad y color ante miles de espectadores.</p>
+                    </div>
+                </article>
+
+                <article class="publications__card fade-in">
+                    <img src="./elementos landing page/publicaciones/danza iberica.jpg" alt="Festival Internacional de la Máscara Ibérica">
+                    <div class="card__content">
+                        <p class="card__tag">Portugal · 2017</p>
+                        <h3 class="card__title">Festival Internacional de la Máscara Ibérica</h3>
+                        <p class="card__paragrah">La fundación llevó el ritmo y la tradición del Congo a Europa, representando a Colombia en uno de los festivales de máscaras más importantes del mundo.</p>
+                    </div>
+                </article>
+
+                <article class="publications__card fade-in">
+                    <img src="./elementos landing page/publicaciones/congo izada.jpg" alt="Izada de Bandera del Congo Grande">
+                    <div class="card__content">
+                        <p class="card__tag">Tradición · Historia</p>
+                        <h3 class="card__title">Izada de Bandera del Congo Grande</h3>
+                        <p class="card__paragrah">Ceremonia que marca el inicio oficial de la temporada del Carnaval, donde el Congo Reformado honra sus raíces y herencia cultural.</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- CONTACTO / CTA -->
+        <section id="contacto" class="follow">
+            <h2 class="follow__title">ÚNETE A NUESTRA DANZA</h2>
+            <p class="follow__subtitle">Regístrate y forma parte de nuestra familia. Te contaremos sobre próximos eventos y talleres.</p>
+            <div class="follow__form-row">
+                <input type="text"  class="follow__input" placeholder="Nombre completo">
+                <input type="tel"   class="follow__input" placeholder="Número de celular">
+                <input type="email" class="follow__input" placeholder="Correo electrónico">
+                <button class="follow__form-btn">Inscribirme</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__top">
+
+            <!-- Columna izquierda: marca + links -->
+            <div class="footer__brand">
+                <div class="footer__logo">
+                    <img src="./elementos landing page/otros/logo congo reformado blanco.png" alt="Logo Fundación">
+                </div>
+                <p class="footer__tagline">
+                    Fundación cultural del Carnaval de Barranquilla. Más de 60 años de tradición, tambor y resistencia alegre.
+                </p>
+                <nav class="footer__links">
+                    <a href="#nosotros">Nosotros</a>
+                    <a href="#actividades">Actividades</a>
+                    <a href="#publicaciones">Publicaciones</a>
+                    <a href="#contacto">Contacto</a>
+                </nav>
+            </div>
+
+            <!-- Columna derecha: info de contacto en fila horizontal -->
+            <div class="footer__form-wrap">
+                <h3 class="footer__form-title">ENCUÉNTRANOS</h3>
+                <div class="footer__contact-blocks">
+
+                    <div class="footer__contact-item">
+                        <span class="follow__info-label">📍 Dirección</span>
+                        <p class="follow__info-value">
+                            Calle 60 con Carrera 20A<br>
+                            Barrio Pumarejo<br>
+                            Barranquilla, Colombia
+                        </p>
+                    </div>
+
+                    <div class="footer__contact-item">
+                        <span class="follow__info-label">📘 Facebook</span>
+                        <p class="follow__info-value">
+                            <a href="https://www.facebook.com/CongoReformado" target="_blank" rel="noopener">
+                                Congo Reformado
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="footer__contact-item">
+                        <span class="follow__info-label">🎭 Carnaval</span>
+                        <p class="follow__info-value">
+                            Embajadores del Carnaval<br>
+                            Patrimonio de la Humanidad<br>
+                            desde 1962
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__copy">© 2024 Fundación Danza del Congo Reformado · Barranquilla, Colombia</p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer para animaciones al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Hamburger menu (básico)
+        const hamburger = document.querySelector('.nav__hamburger');
+        const navContent = document.querySelector('.nav__content');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navContent.classList.toggle('nav--open');
+            if (isOpen) {
+                navContent.style.cssText = `
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: #DF0453;
+                    padding: 20px;
+                    gap: 8px;
+                    z-index: 99;
+                `;
+                navContent.querySelectorAll('.nav__link, .nav__button').forEach(el => {
+                    el.style.display = 'flex';
+                });
+            } else {
+                navContent.removeAttribute('style');
+                navContent.querySelectorAll('.nav__link, .nav__button').forEach(el => {
+                    el.style.display = '';
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
